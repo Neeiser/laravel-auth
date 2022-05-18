@@ -15,6 +15,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 200)->default('unknown');;
+            $table->string('creator_name', 50)->default('unknown');;
+            $table->text('description')->nullable();
+            $table->date('post_years_old');
             $table->timestamps();
         });
     }
