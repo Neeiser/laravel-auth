@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
+    protected $fillable = [
+        'title',
+        'creator_name',
+        'description',
+        'slug',
+    ];
+
     static public function generateSlug($str){
         $slug = Str::of($str)->slug('-');
         $newSlug = $slug;
