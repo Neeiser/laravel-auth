@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Post;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str; /* Per lo Slug */
+
 
 class PostSeeder extends Seeder
 {
@@ -15,13 +15,12 @@ class PostSeeder extends Seeder
             $title = $faker -> sentences(rand(1 , 3), true);
             $creator_name = $faker -> firstName();
             $description = $faker -> text(200);
-            $slug = Str::of($title)->slug('-');
 
             Post::create([
                 'title'         =>  $title,
                 'creator_name'  =>  $creator_name,
                 'description'   =>  $description,
-                'slug'          =>  $slug 
+                'slug'          =>  Post::generateSlug($title),
             ]);
         }
     }
