@@ -10,6 +10,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        
         <style>
             html, body {
                 background-color: #fff;
@@ -68,7 +70,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ route('admin.home') }}">Home</a>
+                        <a href="{{ route('admin.home') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -86,9 +88,17 @@
                 <div>
                     Press <strong>Login</strong> or <strong>Register</strong> to use this site.
                 </div>
-                <div>
+                <div class="m-b-md">
                     If you are already Logged-in press <strong>HOME</strong>.
                 </div>
+                <h3>
+                    Go to:
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action">
+                            <a href="{{ route('admin.posts.index') }}">INDEX</a>
+                        </li>
+                    </ul> 
+                </h3>
             </div>
         </div>
     </body>
