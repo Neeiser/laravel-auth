@@ -3,6 +3,9 @@
 @section('pagetitle', 'Index')
 
 @section('pageContent')
+<form action="{{ route('admin.posts.create')}}">
+  <button class="btn btn-outline-dark">CREATE A NEW DATA</button>
+</form>
 <table class="table">
     <thead>
       <tr>
@@ -22,14 +25,21 @@
           <td>{{ $post->title }}</td>
           <td>{{ $post->slug }}</td>
           <td>
-          <form action="{{ route('admin.posts.show', $post->id)}}">
-            <button>EDIT</button>
-          </form>
-          <form action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button>DELETE</button>
-          </form>
+            <form action="{{ route('admin.posts.show', $post->id)}}">
+              <button class="btn btn-primary">VIEW</button>
+            </form>
+          </td>
+          <td>
+            <form action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger">DELETE</button>
+            </form>
+          </td>
+          <td>
+            <form action="{{ route('admin.posts.edit', $post->id)}}">
+              <button class="btn btn-warning">EDIT</button>
+            </form>
           </td>
         </tr>
       @endforeach
